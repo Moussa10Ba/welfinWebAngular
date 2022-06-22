@@ -1,0 +1,35 @@
+.change:hover{
+    color: white;
+    background-color:#39C595 ;
+    border-radius: 10px;
+}
+.btn-label {
+	position: relative;
+	left: -12px;
+	display: inline-block;
+	padding: 6px 12px;
+
+	border-radius: 3px 0 0 3px;
+}
+
+.btn-labeled {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.btn {
+	margin-bottom: 10px;
+}
+
+.appstore {
+    width: 250px;
+    height: 85px;
+    background-image: url("../../assets/images/appstore.png");
+    background-repeat: no-repeat;
+}
+.playstore {
+    width: 288px;
+    height: 85px;
+    background-image: url("../../assets/images/playstore.png");
+    background-repeat: no-repeat;
+}
