@@ -5,11 +5,11 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
 
   
-    <!--div class="row" style="background-image: url(assets/images/addimage.png); background-repeat: no-repeat; height: 200px; " >
+    <div class="row" style="background-image: url(assets/images/addimage.png); background-repeat: no-repeat; height: 200px; " >
           <label class="btn btn-default btn-file">
             <input type="file" style="display: none;" formControlName="avatar" >
            </label>
-     </div-->
+     </div>
   
             
        <div class="row d-flex justify-content-around mt-3 ">
@@ -19,10 +19,9 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text "><i class="fa fa-user " style="height: 30px;"></i></div>
                 </div>
-                <input type="text" class="form-control" id="usernameIns" placeholder="Welfin" formControlName="username" required>
+                <input type="text" class="form-control" id="username" placeholder="Welfin" formControlName="username" required >
               </div>
         </div>
-              
               
         <div class="col-md-4">
           <label for="password ">Password</label>
@@ -30,10 +29,21 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text bg-light " style="border-right: none;"><i class="fa fa-lock " style="height: 30px;"></i></div>
                 </div>
-                <input type="password" class="form-control"  placeholder="Password" formControlName="password" required>
+                <input type="password" class="form-control"  placeholder="Password" formControlName="password" required value="">
               </div>
         </div>
        </div>
+       <div class="row  text-danger d-flex justify-content-around">
+        <div class="col-md-4">
+          <small *ngIf="!registerForm.get('username').valid && registerForm.get('username').touched">
+            Veuillez Saisir un nom </small>
+        </div>
+
+        <div class="col-md-4">
+          <small *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched">
+            Veuillez Saisir un mot de passe</small>
+        </div>
+      </div>
 
 
        <div class="row d-flex justify-content-around mt-3">
@@ -59,6 +69,19 @@
         </div>
        </div>
 
+       <div class="row  text-danger d-flex justify-content-around">
+        <div class="col-md-4">
+          <small *ngIf="!registerForm.get('entreprise').valid && registerForm.get('entreprise').touched">
+            Veuillez Saisir votre entreprise</small>
+        </div>
+
+        <div class="col-md-4">
+          <small *ngIf="!registerForm.get('adresse').valid && registerForm.get('adresse').touched">
+            Veuillez Saisir votre adresse</small>
+        </div>
+      </div>
+
+
        <div class="row d-flex justify-content-around mt-3">
         <div class="col-md-4 ">
           <label for="email ">Adresse Mail</label>
@@ -82,16 +105,36 @@
         </div>
        </div>
 
+       <div class="row  text-danger d-flex justify-content-around">
+        <div class="col-md-4">
+          <small *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched">
+            Veuillez Saisir une addresse email valide </small>
+        </div>
+
+        <div class="col-md-4">
+          <small *ngIf="!registerForm.get('telephone').valid && registerForm.get('telephone').touched">
+            Veuillez Saisir un numero de telephone</small>
+        </div>
+      </div>
+
+
        <div class="row justify-content-center mt-3">
         <div class="form-group col-md-10" >
           <label for="description">Example textarea</label>
           <textarea class="form-control" id="description" rows="3" formControlName="description" required></textarea>
         </div>
        </div>
+       <div class="row  text-danger d-flex justify-content-around">
+        <div class="col-md-4">
+          <small *ngIf="!registerForm.get('description').valid && registerForm.get('description').touched">
+            Veuillez decrire brievement votre entreprise </small>
+        </div>
+      </div>
+
            
        <div class="row mt-3 d-flex justify-content-center">
             <div class="col-md-6">
-             <button type="submit" class="btn w-100 mb-3" style="background-color: #39C595 ;">Inscription</button>
+             <button type="submit" class="btn w-100 mb-3" style="background-color: #39C595 ;" [disabled]="!registerForm.valid">Inscription</button>
             </div>
         </div>
       </form>

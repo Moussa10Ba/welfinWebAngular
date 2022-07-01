@@ -4,16 +4,20 @@
     <div class="row   justify-content-center" >
         <form [formGroup]="loginForm" (ngsubmit)="onLoginSubmit()">
                 <div class="mb-3">
-                    <label for="username ">Username</label>
+                    <label for="email ">Email</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text bg-light"><i class="fa fa-envelope mt-2" style="height: 30px;"></i></div>
                   </div>
-                  <input type="text" class="form-control" id="username" placeholder="diakhate@gmail.com" formControlName="username">
+                  <input type="email" class="form-control" id="email" placeholder="diakhate@gmail.com" formControlName="email" required>
                 </div>
+                </div>
+                <div class="row  text-danger text-center">
+                  <small *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">
+                    Veuillez Saisir un email Valid</small>
                 </div>
                 <div class="mb-3">
-                    <label for="username ">Password</label>
+                    <label for="password ">Password</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text bg-light " style="border-right: none;"><i class="fa fa-lock mt-2" style="height: 30px;"></i></div>
@@ -21,14 +25,18 @@
                   <input type="password" class="form-control" id="password" placeholder="" formControlName="password">
                 </div>
                 </div>
+                <div class="row text-danger text-center">
+                  <small *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+                    Mot de passe obligatoire</small>
+                </div>
             <div class="row justify-content-center">
                 <div class="col-md-6 ">
-                  <button  type="submit" (click)="onLoginSubmit()" class="btn w-100" style="background-color: #39C595 ;">Connecter</button>
+                  <button  type="submit" (click)="onLoginSubmit()" [disabled]="!loginForm.valid" class="btn w-100 mt-3" style="background-color: #39C595 ;">Connecter</button>
                 </div>
             </div>
           </form>
     </div>
-    <div class="row justify-content-center ">
+    <div class="row justify-content-center  mt-3 ">
       
         <img src="assets/images/amico.png" alt="">
      

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,20 +11,30 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder, ) { }
+  erroRMessage: string
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private afAuth: AngularFireAuth) { }
 
   ngOnInit(): void {
+    this.erroRMessage = '';
     this.loginForm = this.formBuilder.group(
       {
-        username:['', Validators.required],
+        email:['', Validators.required,],
         password:['', Validators.required]
       }
   );
   }
 
   onLoginSubmit(){
-    alert('ok');
+    
+    console.log(this.loginForm.value);
+    if(this.loginForm.invalid){
+      console.log(this.loginForm.value);
+      
+      alert('invalid Forms');
+          return ;
+    }
+   
+    this.authService.loginUser(this.loginForm.value.email, this.loginForm.value.password);
   }
 
 }
